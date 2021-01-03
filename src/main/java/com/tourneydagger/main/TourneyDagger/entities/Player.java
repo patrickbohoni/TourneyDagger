@@ -1,16 +1,18 @@
 package com.tourneydagger.main.TourneyDagger.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+
 import java.io.Serializable;
 
 @Entity
-@Table(name = "participant")
+@Table(name = "player")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class Participant implements Serializable{
+public class Player implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,7 +32,13 @@ public class Participant implements Serializable{
     @Column(name = "w_lr")
     private String wLR;
 
-    //TODO: aici vin relatiile
+    @ManyToOne
+    @JsonIgnoreProperties(value = "players", allowSetters = true)
+    private User user;
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "players", allowSetters = true)
+    private Tournament tournament;
 
     public Long getId() {
         return id;
@@ -40,24 +48,11 @@ public class Participant implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Participant name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Integer getPoints() {
         return points;
     }
 
-    public Participant points (Integer points) {
+    public Player points(Integer points) {
         this.points = points;
         return this;
     }
@@ -70,7 +65,7 @@ public class Participant implements Serializable{
         return ranking;
     }
 
-    public Participant ranking(Integer ranking) {
+    public Player ranking(Integer ranking) {
         this.ranking = ranking;
         return this;
     }
@@ -83,7 +78,7 @@ public class Participant implements Serializable{
         return wLR;
     }
 
-    public Participant wLR(String wLR) {
+    public Player wLR(String wLR) {
         this.wLR = wLR;
         return this;
     }
@@ -92,13 +87,53 @@ public class Participant implements Serializable{
         this.wLR = wLR;
     }
 
-    //TODO: aici vin metodele cu care le legi de relatii
+    public User getUser() {
+        return user;
+    }
+
+    public Player user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public Player tournament(Tournament tournament) {
+        this.tournament = tournament;
+        return this;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Player)) {
+            return false;
+        }
+        return id != null && id.equals(((Player) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
 
     @Override
     public String toString() {
-        return "Participant{" +
+        return "Player{" +
                 "id=" + getId() +
-                ", name='" + getName() + "'" +
                 ", points=" + getPoints() +
                 ", ranking=" + getRanking() +
                 ", wLR='" + getwLR() + "'" +
