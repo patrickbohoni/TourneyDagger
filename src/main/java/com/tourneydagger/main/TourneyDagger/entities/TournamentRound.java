@@ -34,10 +34,10 @@ public class TournamentRound implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "games_id", referencedColumnName = "id"))
     private Set<Game> games = new HashSet<>();
 
-    @ManyToMany(mappedBy = "tournamentrounds")
+    @ManyToOne
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnore
-    private Set<Tournament> tournaments = new HashSet<>();
+    private Tournament currentTournament;
 
     public Long getId() {
         return id;
@@ -98,29 +98,9 @@ public class TournamentRound implements Serializable {
         this.games = games;
     }
 
-    public Set<Tournament> getTournaments() {
-        return tournaments;
-    }
 
-    public TournamentRound tournaments(Set<Tournament> tournaments) {
-        this.tournaments = tournaments;
-        return this;
-    }
-
-    public TournamentRound addTournament(Tournament tournament) {
-        this.tournaments.add(tournament);
-        tournament.getTournamentrounds().add(this);
-        return this;
-    }
-
-    public TournamentRound removeTournament(Tournament tournament) {
-        this.tournaments.remove(tournament);
-        tournament.getTournamentrounds().remove(this);
-        return this;
-    }
-
-    public void setTournaments(Set<Tournament> tournaments) {
-        this.tournaments = tournaments;
+    public void setTournaments(Tournament tournaments) {
+        this.currentTournament = tournaments;
     }
 
     @Override
@@ -147,5 +127,5 @@ public class TournamentRound implements Serializable {
                 ", roundNumber=" + getRoundNumber() +
                 "}";
     }
-    
+
 }

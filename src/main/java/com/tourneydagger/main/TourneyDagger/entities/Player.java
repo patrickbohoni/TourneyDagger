@@ -32,9 +32,9 @@ public class Player implements Serializable {
     @Column(name = "w_lr")
     private String wLR;
 
-    @ManyToOne
-    @JsonIgnoreProperties(value = "players", allowSetters = true)
-    private User user;
+//    @ManyToOne - asta dupa ce implementam userii
+//    @JsonIgnoreProperties(value = "players", allowSetters = true)
+//    private User user;
 
     @ManyToOne
     @JsonIgnoreProperties(value = "players", allowSetters = true)
@@ -87,18 +87,18 @@ public class Player implements Serializable {
         this.wLR = wLR;
     }
 
-    public User getUser() {
-        return user;
-    }
+//    public User getUser() {
+//        return user;
+//    }
 
-    public Player user(User user) {
-        this.user = user;
-        return this;
-    }
+//    public Player user(User user) {
+//        this.user = user;
+//        return this;
+//    }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
 
     public Tournament getTournament() {
         return tournament;

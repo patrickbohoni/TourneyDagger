@@ -1,6 +1,7 @@
 package com.tourneydagger.main.TourneyDagger.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -43,6 +44,11 @@ public class Tournament implements Serializable {
             joinColumns = @JoinColumn(name = "tournament_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "tournamentrounds_id", referencedColumnName = "id"))
     private Set<TournamentRound> tournamentrounds = new HashSet<>();
+
+    @OneToMany
+    @JsonIgnoreProperties(value = "tournament", allowSetters = true)
+    private Set<Player> players;
+
 
     public Long getId() {
         return id;
