@@ -1,9 +1,7 @@
 package com.tourneydagger.main.TourneyDagger.logic;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import com.tourneydagger.main.TourneyDagger.entities.Game;
 import com.tourneydagger.main.TourneyDagger.entities.Player;
@@ -40,15 +38,46 @@ public class GenerateRounds {
 
 
         if(tournament.getTournamentrounds().isEmpty()) {
-            nextRound.setGames(matchPlayers(tournament.getplayers));
+            nextRound.setGames((Set<Game>) matchPlayers(tournament.getPlayers()));
             nextRound.setRoundNumber(1);
             nextRound.setTournaments(tournament); //aici sa fie un singur tournament nu o lista de turnamente - verifica si aici
             nextRound.setName("Round One");
+//            List<TournamentRound> threeRoundTournament = new ArrayList<>();
+//            threeRoundTournament.add(nextRound);
         } else {
-//            make two empty lists of players(winners and losers)
-//            find last round in tournament - find in set round with largest number
-//            parcurge lista de games din runda adaugand in cele 2 liste castigatorii si pierzatorii in listele relevantwe
+//            make two empty lists of players(winners and losers) - done
+//            find last round in tournament - find in set round with largest number - done
+//            parcurge lista de games din runda adaugand in cele 2 liste castigatorii si pierzatorii in listele relevante - done
 //             o data ce avem cele 2 liste facem match players, folosind cele 2 liste - rezulte 2 liste de games care vor fi adaugate rundei noi
+            ArrayList<Player> bagOfWinners = new ArrayList<>();
+            ArrayList<Player> bagOfLosers = new ArrayList<>();
+            int maxValue = Integer.MIN_VALUE;
+            TournamentRound lastRound = new TournamentRound();
+            for(Iterator<TournamentRound> it = tournament.getTournamentrounds().iterator(); it.hasNext(); ) {
+                TournamentRound whichRound = it.next();
+                if (whichRound.getRoundNumber() > maxValue) {
+                    maxValue = whichRound.getRoundNumber();
+                    lastRound = whichRound;
+                }
+            }
+            ArrayList<Game> lastRoundGames = new ArrayList<Game>(lastRound.getGames());
+            for (int i = 0; i < lastRoundGames.size() ; i++) {
+                if(lastRoundGames.get(i).getWinner() == Winner.PLAYER_A) {
+                    bagOfWinners.add(lastRoundGames.get(i).getPlayer1());
+                    bagOfLosers.add(lastRoundGames.get(i).getPlayer2());
+                }
+                if(lastRoundGames.get(i).getWinner() == Winner.PLAYER_B) {
+                    bagOfWinners.add(lastRoundGames.get(i).getPlayer2());
+                    bagOfLosers.add(lastRoundGames.get(i).getPlayer1());
+                }
+            }
+
+            nextRound.setGames((Set<Game>) matchPlayers(bagOfWinners));
+            nextRound.setGames((Set<Game>) matchPlayers(bagOfLosers));
+            nextRound.setRoundNumber(maxValue + 1);
+            nextRound.setTournaments(tournament);
+            nextRound.setName("Round" + (maxValue + 1));
+
         }
         tournament.addTournamentrounds(nextRound); //save round in tournament
         return tournament;

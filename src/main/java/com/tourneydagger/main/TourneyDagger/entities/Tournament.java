@@ -10,6 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.tourneydagger.main.TourneyDagger.entities.enumeration.TournamentType;
@@ -47,8 +48,15 @@ public class Tournament implements Serializable {
 
     @OneToMany
     @JsonIgnoreProperties(value = "tournament", allowSetters = true)
-    private Set<Player> players;
+    private List<Player> players;
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
 
     public Long getId() {
         return id;
@@ -121,13 +129,11 @@ public class Tournament implements Serializable {
 
     public Tournament addTournamentrounds(TournamentRound tournamentRound) {
         this.tournamentrounds.add(tournamentRound);
-        tournamentRound.getTournaments().add(this);
         return this;
     }
 
     public Tournament removeTournamentrounds(TournamentRound tournamentRound) {
         this.tournamentrounds.remove(tournamentRound);
-        tournamentRound.getTournaments().remove(this);
         return this;
     }
 
