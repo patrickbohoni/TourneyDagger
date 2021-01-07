@@ -16,39 +16,26 @@ public class GenerateRounds {
     private static final String ENTITY_NAME = "tournamentRound";
 
 
-    private Tournament generateNextRound(Tournament tournament) {
+    public Tournament generateNextRound(Tournament tournament) {
         if (tournament.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if(tournament.getTournamentrounds() != null && !tournament.getTournamentrounds().isEmpty()) {
-            throw new BadRequestAlertException("Round exists", ENTITY_NAME, "Round Already Exists");
-        }
+//        if(tournament.getTournamentrounds() != null && !tournament.getTournamentrounds().isEmpty()) {
+//            throw new BadRequestAlertException("Round exists", ENTITY_NAME, "Round Already Exists");
+//        }  - asta trebuie corectata - probabil sa dea eroarea daca avem mai mult de 3 runde.
         TournamentRound nextRound = new TournamentRound();
 
         //DONE: check if tournament rounds is null, if null - create an empty list
         if (tournament.getTournamentrounds() == null) {
-            List<TournamentRound> threeRoundTournament = new ArrayList<>();
+            tournament.addTournamentrounds(nextRound);
         }
-        // DONE: Verifica legaturile  - un joc trebuie sa aibe un singur round one-to-one
-        // Updated Game entity cu un one to one mapping
-
-        //tournament should have a list of players(verifica si aici legatura)
-        //DONE: Creat one to many relationship in Tournament
-
-
 
         if(tournament.getTournamentrounds().isEmpty()) {
             nextRound.setGames((Set<Game>) matchPlayers(tournament.getPlayers()));
             nextRound.setRoundNumber(1);
-            nextRound.setTournaments(tournament); //aici sa fie un singur tournament nu o lista de turnamente - verifica si aici
+            nextRound.setTournaments(tournament);
             nextRound.setName("Round One");
-//            List<TournamentRound> threeRoundTournament = new ArrayList<>();
-//            threeRoundTournament.add(nextRound);
         } else {
-//            make two empty lists of players(winners and losers) - done
-//            find last round in tournament - find in set round with largest number - done
-//            parcurge lista de games din runda adaugand in cele 2 liste castigatorii si pierzatorii in listele relevante - done
-//             o data ce avem cele 2 liste facem match players, folosind cele 2 liste - rezulte 2 liste de games care vor fi adaugate rundei noi
             ArrayList<Player> bagOfWinners = new ArrayList<>();
             ArrayList<Player> bagOfLosers = new ArrayList<>();
             int maxValue = Integer.MIN_VALUE;

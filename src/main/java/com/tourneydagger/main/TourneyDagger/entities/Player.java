@@ -140,4 +140,11 @@ public class Player implements Serializable {
                 "}";
     }
 
+    //constructori facuti pentru teste
+
+    public Player(String name) {
+        this.name = name;
+    }
+
+
 }

@@ -168,5 +168,14 @@ public class Tournament implements Serializable {
                 "}";
     }
 
+    //astia sunt constructori folositi pentru testing
 
+    public Tournament(Long id, String name, TournamentType type) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
+
+    public Tournament() {
+    }
 }
