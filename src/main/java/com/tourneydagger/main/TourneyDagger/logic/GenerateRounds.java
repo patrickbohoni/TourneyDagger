@@ -31,7 +31,7 @@ public class GenerateRounds {
         }
 
         if(tournament.getTournamentrounds().isEmpty()) {
-            nextRound.setGames((Set<Game>) matchPlayers(tournament.getPlayers()));
+            nextRound.setGames(new HashSet<>(matchPlayers(tournament.getPlayers())));
             nextRound.setRoundNumber(1);
             nextRound.setTournaments(tournament);
             nextRound.setName("Round One");
@@ -59,8 +59,8 @@ public class GenerateRounds {
                 }
             }
 
-            nextRound.setGames((Set<Game>) matchPlayers(bagOfWinners));
-            nextRound.setGames((Set<Game>) matchPlayers(bagOfLosers));
+            nextRound.setGames(new HashSet<>(matchPlayers(bagOfWinners)));
+            nextRound.getGames().addAll(new HashSet<>(matchPlayers(bagOfLosers)));
             nextRound.setRoundNumber(maxValue + 1);
             nextRound.setTournaments(tournament);
             nextRound.setName("Round" + (maxValue + 1));
@@ -79,7 +79,7 @@ public class GenerateRounds {
         ArrayList<Player> bagOfPlayers = new ArrayList<>(players);
         ArrayList<Game> bagofGames = new ArrayList<>();
         Random randomness = new Random();
-        while (bagOfPlayers.size() > 2) {
+        while (bagOfPlayers.size() >= 2) {
             int player1Index = randomness.nextInt(bagOfPlayers.size());
             Player playerOne = bagOfPlayers.remove(player1Index);
             int player2Index = randomness.nextInt(bagOfPlayers.size());

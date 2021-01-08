@@ -32,7 +32,7 @@ public class TourneyDaggerTest {
         participants.add(player3);
         participants.add(player4);
         participants.add(player5);
-        participants.add(player6);
+//        participants.add(player6);
 
         testTournament.setPlayers(participants);
         GenerateRounds roundGenerator = new GenerateRounds();
