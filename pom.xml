@@ -79,6 +79,11 @@
             <artifactId>problem</artifactId>
             <version>0.23.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.jhipster</groupId>
+            <artifactId>jhipster-framework</artifactId>
+            <version>3.9.1</version>
+        </dependency>
 
     </dependencies>
 
