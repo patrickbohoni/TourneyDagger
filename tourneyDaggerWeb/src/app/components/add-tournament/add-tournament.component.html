@@ -1,0 +1,59 @@
+<div style="width: 400px; margin: auto;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="title">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="tournament.name"
+            name="name"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Location</label>
+          <input
+            class="form-control"
+            id="location"
+            required
+            [(ngModel)]="tournament.location"
+            name="location"
+          />
+        </div>
+  
+
+        <div class="form-group">
+            <label for="description">Date</label>
+            <input
+              class="form-control"
+              id="location"
+              required
+              [(ngModel)]="tournament.Date"
+              name="location"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="description">Tournament Type</label>
+            <input
+              class="form-control"
+              id="location"
+              required
+              [(ngModel)]="tournament.type"
+              name="location"
+            />
+          </div>
+
+        <button (click)="saveTournament()" class="btn btn-success">Submit</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>You submitted successfully!</h4>
+        <button class="btn btn-success" (click)="newTournament()">Add</button>
+      </div>
+    </div>
+  </div>
+  
