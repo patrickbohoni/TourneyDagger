@@ -28,7 +28,7 @@ public class TournamentResource {
 
     private static final String ENTITY_NAME = "tournament";
 
-    @Value("${TourneyDagger.clientApp.name}")
+    @Value("{TourneyDagger.clientApp.name}")
     private String applicationName;
 
     private final TournamentRepository tournamentRepository;

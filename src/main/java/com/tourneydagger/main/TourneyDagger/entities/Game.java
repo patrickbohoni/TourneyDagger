@@ -43,10 +43,8 @@ public class Game implements Serializable {
     @JsonIgnore
     private Set<TournamentRound> rounds = new HashSet<>();
 
-    @OneToOne(mappedBy = "round")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnore
-    private TournamentRound singularRound;
+//    @OneToOne(mappedBy = "round")  -- fix legatura asta
+//    private TournamentRound round;
 
 
     public Long getId() {
