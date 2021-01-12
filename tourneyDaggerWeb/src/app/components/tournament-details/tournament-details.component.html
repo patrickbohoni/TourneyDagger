@@ -1,1 +1,52 @@
-<p>tournament-details works!</p>
+<div style="width: 400px; margin: auto;">
+    <div *ngIf="currentTournament" class="edit-form">
+      <h4>Tournament</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentTournament.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input
+            type="text"
+            class="form-control"
+            id="location"
+            [(ngModel)]="currentTournament.location"
+            name="location"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label><strong>Game system</strong></label>
+          {{ currentTournament.type }}
+        </div>
+      </form>
+  
+  
+      <button class="badge badge-danger mr-2" (click)="deleteTournament()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateTournament()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentTournament">
+      <br />
+      <p>Cannot access this Tournament...</p>
+    </div>
+  </div>
+  

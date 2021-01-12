@@ -1,3 +1,0 @@
-@Injectable({
-    providedIn: 'root',
-   })
