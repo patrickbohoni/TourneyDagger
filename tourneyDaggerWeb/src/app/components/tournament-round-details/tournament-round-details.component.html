@@ -1,0 +1,76 @@
+
+
+
+<div style="width: 400px; margin: auto;">
+    <div *ngIf="currentTournamentRound" class="edit-form">
+      <h4>Tournament Rounds</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentTournamentRound.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="roundNumber">Round Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="roundNumber"
+            [(ngModel)]="currentTournamentRound.roundNumber"
+            name="roundNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="roundNumber">Games</label>
+          <input
+            type="text"
+            class="form-control"
+            id="games"
+            [(ngModel)]="currentTournamentRound.games"
+            name="games"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="roundNumber">Round of Tournament</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tournaments"
+            [(ngModel)]="currentTournamentRound.tournament"
+            name="tournaments"
+          />
+        </div>
+
+
+
+
+        </form>
+  
+
+  
+      <button class="badge badge-danger mr-2" (click)="deleteTournamentRound()">
+        Delete
+      </button>
+  
+      <button
+        type="submit"
+        class="badge badge-success"
+        (click)="updateTournamentRound()"
+      >
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentTournamentRound">
+      <br />
+      <p>Cannot access this Tournament Round...</p>
+    </div>
+  </div>

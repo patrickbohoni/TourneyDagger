@@ -1,0 +1,39 @@
+<div style="width: 400px; margin: auto;">
+    <div *ngIf="currentGame" class="edit-form">
+        <h4>Game</h4>
+        <form>
+            <div class="form-group">
+                <label for="id">Game Number</label>
+                <input type="text" class="form-control" id="number" [(ngModel)]="currentGame.number" name="number" />
+            </div>
+            <div class="form-group">
+                <label for="player1">Player 1</label>
+                <input type="text" class="form-control" id="player1" [(ngModel)]="currentGame.player1" name="player1" />
+            </div>
+
+            <div class="form-group">
+                <label for="player2">Player 2</label>
+                <input type="text" class="form-control" id="player2" [(ngModel)]="currentGame.player2" name="player2" />
+            </div>
+
+            <div class="form-group">
+                <label for="player2">Winner: </label>
+                <input type="text" class="form-control" id="winner" [(ngModel)]="currentGame.winner" name="winner" />
+            </div>
+
+
+            <button class="badge badge-danger mr-2" (click)="deleteGame()">
+                Delete
+            </button>
+
+            <button type="submit" class="badge badge-success" (click)="updateGame()">
+                Update
+            </button>
+            <p>{{ message }}</p>
+    
+
+    <div *ngIf="!currentGame">
+        <br />
+        <p>Cannot access this Game...</p>
+    
+</div>

@@ -1,0 +1,70 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by Round Name"
+        [(ngModel)]="name"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchRoundName()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Current Rounds:</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let tournamentRound of tournamentRound; let i = id"
+        [class.active]="i == currentId"
+        (click)="setActiveTournamentRound(tournamentRound, id)"
+      >
+        {{ tournamentRound.name }}
+      </li>
+    </ul>
+
+
+
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTournamentRounds()">
+        Remove All
+      </button>
+
+
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentTournamentRound">
+        <h4>Tournament Round</h4>
+        <div>
+          <label><strong>Name:</strong></label> {{ currentTournamentRound.name }}
+        </div>
+        <div>
+          <label><strong>Round Number: </strong></label>
+          {{ currentTournamentRound.roundNumber }}
+        </div>
+        <div>
+          <label><strong>Games: </strong></label>
+          {{ currentTournamentRound.games }}
+        </div>
+
+
+  
+        <a class="badge badge-warning" routerLink="/tournament-round/{{ currentTournamentRound.id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentTournamentRound">
+        <br />
+        <p>Please click on a Tournament Round...</p>
+      </div>
+    </div>
+  </div>
+  

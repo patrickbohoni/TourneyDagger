@@ -1,0 +1,69 @@
+<div class="list row">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by player Name"
+          [(ngModel)]="name"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchPlayerName()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Players</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let player of player; let i = id"
+          [class.active]="i == currentId"
+          (click)="setActivePlayer(player, id)"
+        >
+          {{ player.name }}
+        </li>
+      </ul>
+  
+      <button class="m-3 btn btn-sm btn-danger" (click)="removeAllPlayers()">
+        Remove All
+      </button>
+
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentPlayer">
+        <h4>Player</h4>
+        <div>
+          <label><strong>Name:</strong></label> {{ currentPlayer.name }}
+        </div>
+        <div>
+          <label><strong>Points: </strong></label>
+          {{ currentPlayer.points }}
+        </div>
+        <div>
+          <label><strong>Ranking:</strong></label>
+          {{ currentPlayer.ranking }}
+        </div>
+        <div>
+            <label><strong>Win-Loss Ratio:</strong></label>
+            {{ currentPlayer.wLR}}
+          </div>
+  
+        <a class="badge badge-warning" routerLink="/player/{{ currentPlayer.id }}">
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentPlayer">
+        <br />
+        <p>Please click on a Player...</p>
+      </div>
+    </div>
+  </div>
+  
