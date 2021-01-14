@@ -18,6 +18,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @Transactional
@@ -63,19 +64,19 @@ public class TournamentRoundResource {
     }
 
 
-    @GetMapping("/tournament-rounds")
-    public List<TournamentRound> getAllTournamentRounds(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
-        log.debug("REST request to get all TournamentRounds");
-        return tournamentRoundRepository.findAllWithEagerRelationships();
-    }
-
-
-    @GetMapping("/tournament-rounds/{id}")
-    public ResponseEntity<TournamentRound> getTournamentRound(@PathVariable Long id) {
-        log.debug("REST request to get TournamentRound : {}", id);
-        Optional<TournamentRound> tournamentRound = tournamentRoundRepository.findOneWithEagerRelationships(id);
-        return ResponseUtil.wrapOrNotFound(tournamentRound);
-    }
+//    @GetMapping("/tournament-rounds")
+//    public List<TournamentRound> getAllTournamentRounds(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
+//        log.debug("REST request to get all TournamentRounds");
+//        return tournamentRoundRepository.findAllWithEagerRelationships();
+//    }
+//
+//
+//    @GetMapping("/tournament-rounds/{id}")
+//    public ResponseEntity<TournamentRound> getTournamentRound(@PathVariable Long id) {
+//        log.debug("REST request to get TournamentRound : {}", id);
+//        Optional<TournamentRound> tournamentRound = tournamentRoundRepository.findOneWithEagerRelationships(id);
+//        return ResponseUtil.wrapOrNotFound(tournamentRound);
+//    }
 
 
     @DeleteMapping("/tournament-rounds/{id}")

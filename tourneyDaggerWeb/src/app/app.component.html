@@ -1,31 +1,61 @@
+<head>
+    <meta charset = "UTF-8">
+    <title> TourneyDagger </title>
+    <link rel = "stylesheet" href = "app.component.css">
+</head>
+<body>
 <div>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a href="#" class="navbar-brand">TourneyDagger</a>
-        <div class="navbar-nav mr-auto">
+    <nav class="nav-area">
+                <ul>
+            <li><a href="#home">TourneyDagger</a></li>
+            <li><a href="#about">About TourneyDagger</a></li>
+            <li><a href="#">Tournament</a>
+            <ul>
             <li class="nav-item">
                 <a routerLink="tournament" class="nav-link">Tournament</a>
             </li>
             <li class="nav-item">
                 <a routerLink="add" class="nav-link">Create new Tournament</a>
             </li>
-            <li class="nav-item">
-                <a routerLink="tournament-round" class="nav-link">Tournament Rounds</a>
+            </ul>
             </li>
-            <li class="nav-item">
-                <a routerLink="addTR" class="nav-link">Create new Tournament Round</a>
+            <li><a href="#">Tournament Rounds</a>
+                <ul>
+                    <li class="nav-item">
+                        <a routerLink="tournament-round" class="nav-link">Tournament Rounds</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="addTR" class="nav-link">Create new Tournament Round</a>
+                    </li>
+                </ul>
             </li>
-            <li class="nav-item">
-                <a routerLink="addGame" class="nav-link">Create a new Game</a>
+            <li><a href="#">Players</a>
+            <ul>
+                <li class="nav-item">
+                    <a routerLink="addPlayer" class="nav-link">Add a Player</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="player" class="nav-link">Players</a>
+                </li>
+            </ul>
             </li>
-            <li class="nav-item">
-                <a routerLink="game" class="nav-link">Games</a>
+            <li><a href="#">Games</a>
+                <ul>
+                    <li class="nav-item">
+                        <a routerLink="addGame" class="nav-link">Create a new Game</a>
+                    </li>
+                    <li class="nav-item">
+                        <a routerLink="game" class="nav-link">Games</a>
+                    </li>
+                </ul>
             </li>
-        </div>
+        </ul>
     </nav>
 
     <div class="container mt-3">
-        Test text
         <router-outlet></router-outlet>
     </div>
 </div>
+
+</body>
         

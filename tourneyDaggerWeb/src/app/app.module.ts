@@ -17,6 +17,9 @@ import { TournamentRoundListComponent } from './components/tournament-round-list
 import { AddGameComponent } from './components/add-game/add-game.component';
 import { GameDetailsComponent } from './components/game-details/game-details.component';
 import { GamesListComponent } from './components/games-list/games-list.component';
+import { AddPlayerComponent } from './components/add-player/add-player.component';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
+import { PlayersListComponent } from './components/players-list/players-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { GamesListComponent } from './components/games-list/games-list.component
     AddGameComponent,
     GameDetailsComponent,
     GamesListComponent,
+    AddPlayerComponent,
+    PlayerDetailsComponent,
+    PlayersListComponent,
   ],
   imports: [
     BrowserModule,

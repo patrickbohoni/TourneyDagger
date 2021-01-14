@@ -40,30 +40,30 @@ public class TourneyDaggerTest {
 
         roundGenerator.generateNextRound(testTournament);
 
-        System.out.println(testTournament.getTournamentrounds());
-        System.out.println(" ");
-        System.out.println(" ");
-
-        for(TournamentRound currentRound : testTournament.getTournamentrounds()) {
-            System.out.println(currentRound.getGames());
-        }
-
-        player1.setPoints(1);
-        player3.setPoints(1);
-        player2.setPoints(1);
-        player4.setPoints(0);
-        player5.setPoints(0);
-        player5.setPoints(0);
-
-        roundGenerator.generateNextRound(testTournament);
-
-        System.out.println(testTournament.getTournamentrounds());
-        System.out.println(" ");
-        System.out.println(" ");
-
-        for(TournamentRound currentRound : testTournament.getTournamentrounds()) {
-            System.out.println(currentRound.getGames());
-        }
+//        System.out.println(testTournament.getTournamentrounds());
+//        System.out.println(" ");
+//        System.out.println(" ");
+//
+//        for(TournamentRound currentRound : testTournament.getTournamentrounds()) {
+//            System.out.println(currentRound.getGames());
+//        }
+//
+//        player1.setPoints(1);
+//        player3.setPoints(1);
+//        player2.setPoints(1);
+//        player4.setPoints(0);
+//        player5.setPoints(0);
+//        player5.setPoints(0);
+//
+//        roundGenerator.generateNextRound(testTournament);
+//
+//        System.out.println(testTournament.getTournamentrounds());
+//        System.out.println(" ");
+//        System.out.println(" ");
+//
+//        for(TournamentRound currentRound : testTournament.getTournamentrounds()) {
+//            System.out.println(currentRound.getGames());
+//        }
 
 
 

@@ -7,6 +7,7 @@ import com.tourneydagger.main.TourneyDagger.logic.errors.BadRequestAlertExceptio
 import com.tourneydagger.main.TourneyDagger.repository.GameRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +18,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @Transactional
@@ -30,7 +31,9 @@ public class GameResource {
     @Value("{TourneyDagger.clientApp.name}")
     private String applicationName;
 
+
     private final GameRepository gameRepository;
+
 
     public GameResource(GameRepository gameRepository) {
         this.gameRepository = gameRepository;

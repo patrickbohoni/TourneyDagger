@@ -9,6 +9,7 @@ import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 @Transactional
@@ -33,11 +35,16 @@ public class TournamentResource {
 
     private final TournamentRepository tournamentRepository;
 
-    private TournamentRoundRepository tournamentRoundRepository;
+    private final TournamentRoundRepository tournamentRoundRepository;
 
-    public TournamentResource(TournamentRepository tournamentRepository) {
+    public TournamentResource(TournamentRepository tournamentRepository, TournamentRoundRepository tournamentRoundRepository) {
         this.tournamentRepository = tournamentRepository;
+        this.tournamentRoundRepository = tournamentRoundRepository;
     }
+
+    public GenerateRounds roundGenerator = new GenerateRounds();
+
+
 
 
     @PostMapping("/tournaments")
@@ -75,7 +82,7 @@ public class TournamentResource {
     @GetMapping("/tournaments")
     public List<Tournament> getAllTournaments(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Tournaments");
-        return tournamentRepository.findAllWithEagerRelationships();
+        return tournamentRepository.findAll();
     }
 
 

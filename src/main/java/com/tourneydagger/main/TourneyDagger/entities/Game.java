@@ -43,9 +43,6 @@ public class Game implements Serializable {
     @JsonIgnore
     private Set<TournamentRound> rounds = new HashSet<>();
 
-//    @OneToOne(mappedBy = "round")  -- fix legatura asta
-//    private TournamentRound round;
-
 
     public Long getId() {
         return id;

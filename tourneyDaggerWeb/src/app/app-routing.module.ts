@@ -9,6 +9,9 @@ import { TournamentRoundListComponent } from './components/tournament-round-list
 import { GamesListComponent } from './components/games-list/games-list.component';
 import { GameDetailsComponent } from './components/game-details/game-details.component';
 import { AddGameComponent } from './components/add-game/add-game.component'; 
+import { PlayersListComponent } from './components/players-list/players-list.component';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
+import { AddPlayerComponent } from './components/add-player/add-player.component';
 
 
 
@@ -22,8 +25,10 @@ const routes: Routes = [
   { path: 'addTR', component: AddTournamentRoundComponent},
   { path: 'game', component: GamesListComponent},
   { path: 'game/:id', component: GameDetailsComponent},
-  { path: 'addGame', component: AddGameComponent}
-
+  { path: 'addGame', component: AddGameComponent},
+  { path: 'player', component: PlayersListComponent},
+  { path: 'player/:id', component: PlayerDetailsComponent},
+  { path: 'addPlayer', component: AddPlayerComponent}
 ];
 
 @NgModule({

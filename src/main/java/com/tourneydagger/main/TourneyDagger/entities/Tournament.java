@@ -39,11 +39,7 @@ public class Tournament implements Serializable {
     @Column(name = "type")
     private TournamentType type;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JoinTable(name = "tournament_tournamentrounds",
-            joinColumns = @JoinColumn(name = "tournament_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "tournamentrounds_id", referencedColumnName = "id"))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<TournamentRound> tournamentrounds = new HashSet<>();
 
     @OneToMany
