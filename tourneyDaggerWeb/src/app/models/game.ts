@@ -4,6 +4,7 @@ import { Winner } from '../models/enumerations/winner.model';
 
 export interface IGame {
   id?: number;
+  number?: number;
   winner?: Winner;
   player1?: IPlayer;
   player2?: IPlayer;
@@ -13,6 +14,7 @@ export interface IGame {
 export class Game implements IGame {
   constructor(
     public id?: number,
+    public number?: number,
     public winner?: Winner,
     public player1?: IPlayer,
     public player2?: IPlayer,

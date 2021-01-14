@@ -34,7 +34,7 @@ export class TournamentDetailsComponent implements OnInit {
   }
 
   updateTournament(): void {
-    this.tournamentService.update(this.currentTournament.id , this.currentTournament)
+    this.tournamentService.update(this.currentTournament)
     .subscribe(
       response => {
         console.log(response);

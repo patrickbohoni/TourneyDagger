@@ -26,6 +26,9 @@ public class Game implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "number")
+    private Long number;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "winner")
     private Winner winner;
@@ -109,6 +112,19 @@ public class Game implements Serializable {
     public Game removeRound(TournamentRound tournamentRound) {
         this.rounds.remove(tournamentRound);
         tournamentRound.getGames().remove(this);
+        return this;
+    }
+
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
+    public Game number(Long number) {
+        this.number = number;
         return this;
     }
 

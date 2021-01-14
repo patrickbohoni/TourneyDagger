@@ -83,6 +83,19 @@ public class Player implements Serializable {
         return this;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Player name(String name){
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setwLR(String wLR) {
         this.wLR = wLR;
     }
@@ -146,5 +159,6 @@ public class Player implements Serializable {
         this.name = name;
     }
 
-
+    public Player() {
+    }
 }

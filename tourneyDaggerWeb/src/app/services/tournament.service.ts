@@ -24,8 +24,8 @@ export class TournamentService {
         return this.http.post(baseUrl, data);
     }
 
-    update(id, data): Observable<Tournament> {
-        return this.http.put(`${baseUrl}/${id}`, data);
+    update(data): Observable<Tournament> {
+        return this.http.put(baseUrl, data);
     
     }
 
