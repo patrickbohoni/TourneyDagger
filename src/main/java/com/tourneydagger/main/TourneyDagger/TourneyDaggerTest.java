@@ -37,9 +37,16 @@ public class TourneyDaggerTest {
         testTournament.setPlayers(participants);
         GenerateRounds roundGenerator = new GenerateRounds();
 
+        player1.setTournament(testTournament);
+        System.out.println(testTournament.getPlayers());
 
-        roundGenerator.generateNextRound(testTournament);
 
+
+
+
+
+//        roundGenerator.generateNextRound(testTournament);
+//
 //        System.out.println(testTournament.getTournamentrounds());
 //        System.out.println(" ");
 //        System.out.println(" ");
@@ -64,23 +71,7 @@ public class TourneyDaggerTest {
 //        for(TournamentRound currentRound : testTournament.getTournamentrounds()) {
 //            System.out.println(currentRound.getGames());
 //        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//
     }
 
 }

@@ -4,6 +4,7 @@
     <div class="submit-form">
       <div *ngIf="!submitted">
         <div class="form-group">
+          <h4>Create a new Tournament</h4>
           <label for="title">Name</label>
           <input
             type="text"
@@ -31,10 +32,10 @@
             <label for="description">Date</label>
             <input
               class="form-control"
-              id="location"
+              id="date"
               required
               [(ngModel)]="tournament.Date"
-              name="location"
+              name="Date"
             />
           </div>
 
@@ -42,10 +43,10 @@
             <label for="description">Tournament Type</label>
             <input
               class="form-control"
-              id="location"
+              id="type"
               required
               [(ngModel)]="tournament.type"
-              name="location"
+              name="type"
             />
           </div>
 

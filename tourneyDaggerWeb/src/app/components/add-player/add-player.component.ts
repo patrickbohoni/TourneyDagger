@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Tournament } from 'src/app/models/tournament';
 import { PlayerService } from '../../services/player.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AddPlayerComponent implements OnInit {
     points: '',
     ranking: '',
     wLR: '',
-    tournament: ''
+    // tournament: [Tournament]
   };
 
   submitted = false; constructor(private playerService: PlayerService) {
@@ -26,7 +27,7 @@ export class AddPlayerComponent implements OnInit {
       points: this.player.points,
       ranking: this.player.ranking,
       wLR: this.player.wLR,
-      tournament: this.player.tournament
+      // tournament: this.player.tournament
 
     }; this.playerService.create(data)
       .subscribe(
@@ -45,7 +46,7 @@ export class AddPlayerComponent implements OnInit {
       points: '',
       ranking: '',
       wLR: '',
-      tournament: ''
+      // tournament: [Tournament]
     };
   }
 }

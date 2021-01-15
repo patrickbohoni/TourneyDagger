@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Game } from 'src/app/models/game';
 import { TournamentRoundService } from '../../services/tournament-round.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class AddTournamentRoundComponent implements OnInit {
     id: '',
     name: '',
     roundNumber: '',
-    games: '',
+    games: [Game],
     tournament: ''
   };
 
@@ -45,7 +46,7 @@ export class AddTournamentRoundComponent implements OnInit {
       id: '',
       name: '',
       roundNumber: '',
-      games: '',
+      games: [Game],
       tournament: ''
     };
   }

@@ -45,6 +45,32 @@ export class TournamentDetailsComponent implements OnInit {
       });
   }
 
+  runTournament(): void {
+    this.tournamentService.generateRound(this.currentTournament)
+    .subscribe(
+      response => {
+        console.log(response);
+        this.message = 'A new round has been added and the players have been matched';
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  addPlayerRoster(): void {
+    this.tournamentService.createPlayerRoster(this.currentTournament)
+    .subscribe(
+      response => {
+        console.log(response);
+        this.message = 'Players have been added to the tournament';
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
   deleteTournament(): void {
     this.tournamentService.delete(this.currentTournament.id)
     .subscribe(

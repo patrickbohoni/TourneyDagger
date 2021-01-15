@@ -1,6 +1,8 @@
 package com.tourneydagger.main.TourneyDagger.logic;
 
+import com.tourneydagger.main.TourneyDagger.entities.Player;
 import com.tourneydagger.main.TourneyDagger.entities.Tournament;
+import com.tourneydagger.main.TourneyDagger.repository.PlayerRepository;
 import com.tourneydagger.main.TourneyDagger.repository.TournamentRepository;
 import com.tourneydagger.main.TourneyDagger.repository.TournamentRoundRepository;
 import com.tourneydagger.main.TourneyDagger.logic.errors.BadRequestAlertException;
@@ -15,8 +17,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,13 +41,16 @@ public class TournamentResource {
 
     private final TournamentRoundRepository tournamentRoundRepository;
 
-    public TournamentResource(TournamentRepository tournamentRepository, TournamentRoundRepository tournamentRoundRepository) {
+    private final PlayerRepository playerRepository;
+
+    public TournamentResource(TournamentRepository tournamentRepository, TournamentRoundRepository tournamentRoundRepository,
+                              PlayerRepository playerRepository) {
         this.tournamentRepository = tournamentRepository;
         this.tournamentRoundRepository = tournamentRoundRepository;
+        this.playerRepository = playerRepository;
     }
 
     public GenerateRounds roundGenerator = new GenerateRounds();
-
 
 
 
@@ -72,6 +79,24 @@ public class TournamentResource {
         if(tournamentRoundRepository.count() > 3 ) {
             throw new BadRequestAlertException("This tournament is limited to 3 rounds", ENTITY_NAME, "3 rounds maximum");
         }
+        Tournament result = tournamentRepository.save(tournament);
+        return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, tournament.getId().toString()))
+                .body(result);
+    }
+
+    @PutMapping("/tournaments/round-generator")
+    public ResponseEntity<Tournament> roundGenerator(@RequestBody Tournament tournament) throws URISyntaxException {
+        roundGenerator.generateNextRound(tournament);
+        Tournament result = tournamentRepository.save(tournament);
+        return ResponseEntity.ok()
+                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, tournament.getId().toString()))
+                .body(result);
+    }
+
+    @PutMapping("/tournaments/tournament-roster")
+    public ResponseEntity<Tournament> createPlayerRoster(@RequestBody Tournament tournament) throws URISyntaxException {
+        tournament.setPlayers(playerRepository.findAll());
         Tournament result = tournamentRepository.save(tournament);
         return ResponseEntity.ok()
                 .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, tournament.getId().toString()))

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Winner } from 'src/app/models/enumerations/winner.model';
+import { Player } from 'src/app/models/player';
+import { TournamentRound } from 'src/app/models/tournament-round';
 import { GameService } from '../../services/game.service';
 
 
@@ -12,9 +15,9 @@ export class AddGameComponent implements OnInit {
   game = {
     id: '',
     winner: '',
-    player1: '',
-    player2: '',
-    rounds: ''
+    player1: [Player],
+    player2: [Player],
+    rounds: [TournamentRound]
   };
 
   submitted = false; constructor(private gameService: GameService) {
@@ -41,9 +44,9 @@ export class AddGameComponent implements OnInit {
     this.game = {
       id: '',
       winner: '',
-      player1: '',
-      player2: '',
-      rounds: ''
+      player1: [Player],
+      player2: [Player],
+      rounds: [TournamentRound]
     };
   }
 }

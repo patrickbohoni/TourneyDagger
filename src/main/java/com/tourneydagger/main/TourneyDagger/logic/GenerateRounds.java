@@ -34,7 +34,7 @@ public class GenerateRounds {
             nextRound.setGames(new HashSet<>(matchPlayers(tournament.getPlayers())));
             nextRound.setRoundNumber(1);
             nextRound.setTournaments(tournament);
-            nextRound.setName("Round One");
+            nextRound.setName("Round 1");
         } else {
             ArrayList<Player> bagOfWinners = new ArrayList<>();
             ArrayList<Player> bagOfLosers = new ArrayList<>();
@@ -63,7 +63,7 @@ public class GenerateRounds {
             nextRound.getGames().addAll(new HashSet<>(matchPlayers(bagOfLosers)));
             nextRound.setRoundNumber(maxValue + 1);
             nextRound.setTournaments(tournament);
-            nextRound.setName("Round" + (maxValue + 1));
+            nextRound.setName("Round " + (maxValue + 1));
 
         }
         tournament.addTournamentrounds(nextRound); //save round in tournament

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { TournamentRound } from 'src/app/models/tournament-round';
 import {TournamentService} from '../../services/tournament.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class AddTournamentComponent implements OnInit {
     location: '',
     date: '',
     type: '',
-    tournamentrounds: ''
+    tournamentrounds: [TournamentRound]
   };
   
   submitted = false;  constructor(private tournamentService: TournamentService) {
@@ -43,6 +44,6 @@ export class AddTournamentComponent implements OnInit {
       location: '',
       date: '',
       type: '',
-      tournamentrounds: ''
+      tournamentrounds: [TournamentRound]
     };
   }}

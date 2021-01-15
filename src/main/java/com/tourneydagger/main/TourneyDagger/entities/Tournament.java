@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,7 @@ public class Tournament implements Serializable {
     private TournamentType type;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Set<TournamentRound> tournamentrounds = new HashSet<>();
+    private List<TournamentRound> tournamentrounds = new ArrayList<>();
 
     @OneToMany
     @JsonIgnoreProperties(value = "tournament", allowSetters = true)
@@ -114,11 +115,11 @@ public class Tournament implements Serializable {
         this.type = type;
     }
 
-    public Set<TournamentRound> getTournamentrounds() {
+    public List<TournamentRound> getTournamentrounds() {
         return tournamentrounds;
     }
 
-    public Tournament tournamentrounds(Set<TournamentRound> tournamentRounds) {
+    public Tournament tournamentrounds(List<TournamentRound> tournamentRounds) {
         this.tournamentrounds = tournamentRounds;
         return this;
     }
@@ -133,7 +134,7 @@ public class Tournament implements Serializable {
         return this;
     }
 
-    public void setTournamentrounds(Set<TournamentRound> tournamentRounds) {
+    public void setTournamentrounds(List<TournamentRound> tournamentRounds) {
         this.tournamentrounds = tournamentRounds;
     }
 
