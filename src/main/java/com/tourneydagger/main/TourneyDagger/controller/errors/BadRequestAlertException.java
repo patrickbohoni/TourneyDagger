@@ -1,4 +1,4 @@
-package com.tourneydagger.main.TourneyDagger.logic.errors;
+package com.tourneydagger.main.TourneyDagger.controller.errors;
 
 import org.zalando.problem.AbstractThrowableProblem;
 import org.zalando.problem.Status;

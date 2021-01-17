@@ -1,4 +1,4 @@
-package com.tourneydagger.main.TourneyDagger.logic;
+package com.tourneydagger.main.TourneyDagger.controller;
 
 
 import java.util.*;
@@ -8,7 +8,7 @@ import com.tourneydagger.main.TourneyDagger.entities.Player;
 import com.tourneydagger.main.TourneyDagger.entities.Tournament;
 import com.tourneydagger.main.TourneyDagger.entities.TournamentRound;
 import com.tourneydagger.main.TourneyDagger.entities.enumeration.Winner;
-import com.tourneydagger.main.TourneyDagger.logic.errors.BadRequestAlertException;
+import com.tourneydagger.main.TourneyDagger.controller.errors.BadRequestAlertException;
 
 
 public class GenerateRounds {

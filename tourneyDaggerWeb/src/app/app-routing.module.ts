@@ -12,11 +12,14 @@ import { AddGameComponent } from './components/add-game/add-game.component';
 import { PlayersListComponent } from './components/players-list/players-list.component';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
+import { LoginComponent } from './login/login.component';
 
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tournament', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent},
+  // { path: '', redirectTo: 'tournament', pathMatch: 'full'},
   { path: 'tournament', component: TournamentListComponent},
   { path: 'tournament/:id', component: TournamentDetailsComponent},
   { path: 'add', component: AddTournamentComponent},

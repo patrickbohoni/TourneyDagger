@@ -1,8 +1,8 @@
-package com.tourneydagger.main.TourneyDagger.logic;
+package com.tourneydagger.main.TourneyDagger.controller;
 
 import com.tourneydagger.main.TourneyDagger.entities.Player;
 import com.tourneydagger.main.TourneyDagger.repository.PlayerRepository;
-import com.tourneydagger.main.TourneyDagger.logic.errors.BadRequestAlertException;
+import com.tourneydagger.main.TourneyDagger.controller.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;

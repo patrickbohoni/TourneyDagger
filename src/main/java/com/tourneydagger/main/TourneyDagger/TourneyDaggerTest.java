@@ -1,16 +1,11 @@
 package com.tourneydagger.main.TourneyDagger;
 
-import com.tourneydagger.main.TourneyDagger.entities.Game;
 import com.tourneydagger.main.TourneyDagger.entities.Player;
 import com.tourneydagger.main.TourneyDagger.entities.Tournament;
-import com.tourneydagger.main.TourneyDagger.entities.TournamentRound;
-import com.tourneydagger.main.TourneyDagger.entities.enumeration.Winner;
-import com.tourneydagger.main.TourneyDagger.logic.GenerateRounds;
+import com.tourneydagger.main.TourneyDagger.controller.GenerateRounds;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class TourneyDaggerTest {
 

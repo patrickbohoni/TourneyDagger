@@ -50,6 +50,12 @@
                 </ul>
             </li>
         </ul>
+        
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li>
+                <a *ngIf="isLoggedIn" class="nav-link" href="#" (click)=handleLogout()>Logout</a>
+            </li>
+        </ul>
     </nav>
 
     <div class="container mt-3">

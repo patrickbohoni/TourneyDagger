@@ -75,3 +75,7 @@ a{
 .nav-area ul ul ul li:hover a{
   background: 34495a;
 }
+
+.logout {
+  float:right
+}

@@ -1,7 +1,7 @@
-package com.tourneydagger.main.TourneyDagger.logic;
+package com.tourneydagger.main.TourneyDagger.controller;
 
 import com.tourneydagger.main.TourneyDagger.entities.TournamentRound;
-import com.tourneydagger.main.TourneyDagger.logic.errors.BadRequestAlertException;
+import com.tourneydagger.main.TourneyDagger.controller.errors.BadRequestAlertException;
 import com.tourneydagger.main.TourneyDagger.repository.TournamentRoundRepository;
 
 import io.github.jhipster.web.util.HeaderUtil;
