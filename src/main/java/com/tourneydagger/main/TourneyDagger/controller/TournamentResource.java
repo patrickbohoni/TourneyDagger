@@ -1,6 +1,9 @@
 package com.tourneydagger.main.TourneyDagger.controller;
 
+import com.tourneydagger.main.TourneyDagger.entities.Game;
 import com.tourneydagger.main.TourneyDagger.entities.Tournament;
+import com.tourneydagger.main.TourneyDagger.entities.TournamentRound;
+import com.tourneydagger.main.TourneyDagger.repository.GameRepository;
 import com.tourneydagger.main.TourneyDagger.repository.PlayerRepository;
 import com.tourneydagger.main.TourneyDagger.repository.TournamentRepository;
 import com.tourneydagger.main.TourneyDagger.repository.TournamentRoundRepository;
@@ -39,11 +42,14 @@ public class TournamentResource {
 
     private final PlayerRepository playerRepository;
 
+    private final GameRepository gameRepository;
+
     public TournamentResource(TournamentRepository tournamentRepository, TournamentRoundRepository tournamentRoundRepository,
-                              PlayerRepository playerRepository) {
+                              PlayerRepository playerRepository, GameRepository gameRepository) {
         this.tournamentRepository = tournamentRepository;
         this.tournamentRoundRepository = tournamentRoundRepository;
         this.playerRepository = playerRepository;
+        this.gameRepository = gameRepository;
     }
 
     public GenerateRounds roundGenerator = new GenerateRounds();
@@ -83,7 +89,12 @@ public class TournamentResource {
 
     @PutMapping("/tournaments/round-generator")
     public ResponseEntity<Tournament> roundGenerator(@RequestBody Tournament tournament) throws URISyntaxException {
-        roundGenerator.generateNextRound(tournament);
+        System.out.println("Round generator started");
+        TournamentRound nextRound = roundGenerator.generateNextRound(tournament);
+        for(Game g : nextRound.getGames() ) {
+            gameRepository.save(g);
+        }
+        tournamentRoundRepository.save(nextRound);
         Tournament result = tournamentRepository.save(tournament);
         return ResponseEntity.ok()
                 .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, tournament.getId().toString()))

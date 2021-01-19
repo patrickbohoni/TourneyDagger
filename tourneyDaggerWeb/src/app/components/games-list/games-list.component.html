@@ -54,11 +54,11 @@
         </div>
         <div>
           <label><strong>Player 1:</strong></label>
-          {{ currentGame.player1 }}
+          {{ currentGame.player1.name }}
         </div>
         <div>
             <label><strong>Player 2:</strong></label>
-            {{ currentGame.player2 }}
+            {{ currentGame.player2.name }}
         </div>
   
         <a class="badge badge-warning" routerLink="/game/{{ currentGame.id }}">

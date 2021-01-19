@@ -55,6 +55,10 @@ a{
   left:0;
 }
 
+.nav-link {
+  align-self: right;
+}
+
 .nav-area ul li:hover > ul {
   display: block;
 }

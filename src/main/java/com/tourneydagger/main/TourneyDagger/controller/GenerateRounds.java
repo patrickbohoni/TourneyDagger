@@ -16,7 +16,9 @@ public class GenerateRounds {
     private static final String ENTITY_NAME = "tournamentRound";
 
 
-    public Tournament generateNextRound(Tournament tournament) {
+
+    public TournamentRound generateNextRound(Tournament tournament) {
+        System.out.println("Generating round one");
         if (tournament.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
@@ -24,20 +26,25 @@ public class GenerateRounds {
 //            throw new BadRequestAlertException("Round exists", ENTITY_NAME, "Round Already Exists");
 //        }  - asta trebuie corectata - probabil sa dea eroarea daca avem mai mult de 3 runde.
         TournamentRound nextRound = new TournamentRound();
+        System.out.println("created empty new round");
 
         //DONE: check if tournament rounds is null, if null - create an empty list
         if (tournament.getTournamentrounds() == null) {
             tournament.addTournamentrounds(nextRound);
+            System.out.println("Added empty round to tournament");
         }
 
         if(tournament.getTournamentrounds().isEmpty()) {
+            System.out.println("Matching for first round #players: " + tournament.getPlayers().size());
             nextRound.setGames(new HashSet<>(matchPlayers(tournament.getPlayers())));
+            System.out.println("Created games");
             nextRound.setRoundNumber(1);
             nextRound.setTournaments(tournament);
             nextRound.setName("Round 1");
         } else {
             ArrayList<Player> bagOfWinners = new ArrayList<>();
             ArrayList<Player> bagOfLosers = new ArrayList<>();
+            System.out.println("Matching for subsequent rounds #players: " + tournament.getPlayers().size());
             int maxValue = Integer.MIN_VALUE;
             TournamentRound lastRound = new TournamentRound();
             for(Iterator<TournamentRound> it = tournament.getTournamentrounds().iterator(); it.hasNext(); ) {
@@ -66,8 +73,10 @@ public class GenerateRounds {
             nextRound.setName("Round " + (maxValue + 1));
 
         }
+
         tournament.addTournamentrounds(nextRound); //save round in tournament
-        return tournament;
+        System.out.println("Added Next Round to tournament");
+        return nextRound;
     }
 
 
@@ -88,6 +97,8 @@ public class GenerateRounds {
             game.setPlayer1(playerOne);
             game.setPlayer2(playerTwo);
             bagofGames.add(game);
+            System.out.println("Game created");
+
         }
         if(bagOfPlayers.size() == 1) {
             Game game = new Game();
@@ -95,6 +106,7 @@ public class GenerateRounds {
             game.setPlayer2(bagOfPlayers.get(0));
             game.setWinner(Winner.PLAYER_A);
             bagofGames.add(game);
+            System.out.println("Bye game created");
         }
         return bagofGames;
     }
